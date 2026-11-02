@@ -1,0 +1,2500 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Evaluasi Matematika Kelas X — Kurikulum Nasional SMA</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- KaTeX CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --bg-base: #0B0B10;
+      --bg-mid: #170F29;
+      --bg-deep-purple: #2A124C;
+      --surface-1: #0D0D12;
+      --surface-2: #13131A;
+      --surface-3: #1A1924;
+      --surface-hover: #211F30;
+      --purple-primary: #7C3AED;
+      --purple-accent: #9333EA;
+      --purple-bright: #A855F7;
+      --purple-soft: rgba(147, 51, 234, 0.14);
+      --border-subtle: rgba(147, 51, 234, 0.28);
+      --border-strong: rgba(168, 85, 247, 0.65);
+      --border-neutral: rgba(255, 255, 255, 0.08);
+      --text-primary: #F3F4F6;
+      --text-secondary: #9CA3AF;
+      --text-muted: #6B7280;
+      --status-correct: #10B981;
+      --status-correct-bg: rgba(16, 185, 129, 0.12);
+      --status-correct-border: rgba(16, 185, 129, 0.4);
+      --status-wrong: #F43F5E;
+      --status-wrong-bg: rgba(244, 63, 94, 0.12);
+      --status-wrong-border: rgba(244, 63, 94, 0.4);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --shadow-card: 0 16px 40px -12px rgba(7, 5, 16, 0.75), 0 0 24px -4px rgba(124, 58, 237, 0.12);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100dvh;
+      font-family: var(--font-sans);
+      color: var(--text-primary);
+      background-color: var(--bg-base);
+      background-image:
+        radial-gradient(circle at 15% 10%, rgba(42, 18, 76, 0.65) 0%, transparent 48%),
+        radial-gradient(circle at 85% 85%, rgba(124, 58, 237, 0.22) 0%, transparent 52%),
+        linear-gradient(160deg, var(--bg-base) 0%, var(--bg-mid) 52%, var(--bg-deep-purple) 100%);
+      background-attachment: fixed;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Top Decorative Geometric Accent Bar */
+    .wakanda-top-bar {
+      height: 3px;
+      width: 100%;
+      background: linear-gradient(90deg, transparent 0%, var(--purple-primary) 25%, var(--purple-bright) 50%, var(--purple-primary) 75%, transparent 100%);
+      opacity: 0.85;
+    }
+
+    /* Layout Container */
+    .app-shell {
+      width: 100%;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: clamp(1.25rem, 4vw, 2.75rem) clamp(1rem, 3.5vw, 1.75rem);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Utility Visibility */
+    .view-section {
+      display: none;
+      animation: fadeTransition 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .view-section.active {
+      display: block;
+    }
+
+    @keyframes fadeTransition {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Header / Brand */
+    .brand-header {
+      margin-bottom: clamp(1.75rem, 4vw, 2.5rem);
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 1.35rem;
+    }
+
+    .brand-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--purple-bright);
+      background: rgba(124, 58, 237, 0.12);
+      border: 1px solid var(--border-subtle);
+      padding: 0.3rem 0.7rem;
+      border-radius: 4px;
+      margin-bottom: 0.85rem;
+    }
+
+    .brand-title {
+      font-size: clamp(1.6rem, 4.2vw, 2.35rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: var(--text-primary);
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    .brand-subtitle {
+      font-size: clamp(0.9rem, 2.2vw, 1rem);
+      color: var(--text-secondary);
+      max-width: 64ch;
+    }
+
+    /* Menu Topic Vertical Stack (Strictly 1 Column) */
+    .menu-section-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+      margin-bottom: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .topic-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .topic-button {
+      width: 100%;
+      min-height: 76px;
+      background: linear-gradient(145deg, var(--surface-2) 0%, var(--surface-1) 100%);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.15rem 1.35rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      text-align: left;
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      cursor: pointer;
+      transition: transform 0.16s ease, border-color 0.16s ease, background-color 0.16s ease, box-shadow 0.16s ease;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .topic-button::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, var(--purple-bright), var(--purple-primary));
+      opacity: 0.75;
+      transition: opacity 0.16s ease, width 0.16s ease;
+    }
+
+    .topic-button:hover {
+      background: var(--surface-3);
+      border-color: var(--border-strong);
+      transform: translateY(-2px);
+      box-shadow: 0 18px 36px -10px rgba(7, 5, 16, 0.85), 0 0 22px -2px rgba(147, 51, 234, 0.28);
+    }
+
+    .topic-button:hover::before {
+      opacity: 1;
+      width: 6px;
+    }
+
+    .topic-button:active {
+      transform: translateY(0);
+    }
+
+    .topic-left {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .topic-index {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--purple-bright);
+      background: rgba(124, 58, 237, 0.15);
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 0.35rem 0.55rem;
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+
+    .topic-info {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .topic-name {
+      font-size: clamp(1.05rem, 2.5vw, 1.2rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+      letter-spacing: -0.01em;
+    }
+
+    .topic-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    .topic-right {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-shrink: 0;
+    }
+
+    .topic-badge {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      background: var(--surface-1);
+      border: 1px solid var(--border-neutral);
+      padding: 0.25rem 0.55rem;
+      border-radius: 4px;
+      display: none;
+    }
+
+    @media (min-width: 540px) {
+      .topic-badge {
+        display: inline-block;
+      }
+    }
+
+    .chevron-icon {
+      width: 20px;
+      height: 20px;
+      stroke: var(--purple-bright);
+      transition: transform 0.16s ease;
+    }
+
+    .topic-button:hover .chevron-icon {
+      transform: translateX(4px);
+    }
+
+    /* Quiz Top Bar & Progress */
+    .quiz-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      min-height: 42px;
+      padding: 0.45rem 0.85rem;
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      color: var(--text-secondary);
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-ghost:hover {
+      color: var(--text-primary);
+      background: var(--surface-3);
+      border-color: var(--border-strong);
+    }
+
+    .quiz-meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      padding: 0.4rem 0.85rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .quiz-topic-tag {
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--purple-bright);
+    }
+
+    .quiz-divider-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--text-muted);
+    }
+
+    .quiz-step-counter {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    /* Progress Track */
+    .progress-track {
+      width: 100%;
+      height: 6px;
+      background: var(--surface-1);
+      border: 1px solid var(--border-neutral);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 1.35rem;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 20%;
+      background: linear-gradient(90deg, var(--purple-primary), var(--purple-bright));
+      transition: width 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* Question Card */
+    .question-card {
+      background: linear-gradient(160deg, var(--surface-2) 0%, var(--surface-1) 100%);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: clamp(1.25rem, 3.5vw, 2rem);
+      box-shadow: var(--shadow-card);
+      margin-bottom: 1.25rem;
+    }
+
+    .question-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.9rem;
+      padding-bottom: 0.7rem;
+      border-bottom: 1px solid var(--border-neutral);
+    }
+
+    .question-code {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.05em;
+    }
+
+    .question-instruction {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--purple-bright);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .question-body {
+      font-size: clamp(1rem, 2.3vw, 1.125rem);
+      color: var(--text-primary);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+      overflow-x: auto;
+      padding-bottom: 0.25rem;
+    }
+
+    /* Options List */
+    .options-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .option-btn {
+      width: 100%;
+      min-height: 56px;
+      background: var(--surface-3);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.95rem;
+      text-align: left;
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 0.98rem;
+      cursor: pointer;
+      transition: background-color 0.14s ease, border-color 0.14s ease, transform 0.12s ease, box-shadow 0.14s ease;
+    }
+
+    .option-btn:hover {
+      background: var(--surface-hover);
+      border-color: var(--border-strong);
+    }
+
+    .option-btn:active {
+      transform: scale(0.995);
+    }
+
+    .option-btn.selected {
+      background: rgba(124, 58, 237, 0.18);
+      border-color: var(--purple-bright);
+      box-shadow: 0 0 0 1px var(--purple-bright), 0 8px 20px -6px rgba(147, 51, 234, 0.35);
+    }
+
+    .option-letter {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      flex-shrink: 0;
+      transition: all 0.14s ease;
+    }
+
+    .option-btn.selected .option-letter {
+      background: var(--purple-primary);
+      border-color: var(--purple-bright);
+      color: var(--text-primary);
+    }
+
+    .option-content {
+      flex: 1;
+      min-width: 0;
+      overflow-x: auto;
+      padding: 0.15rem 0;
+    }
+
+    /* Quiz Navigation Footer */
+    .quiz-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.85rem;
+      margin-top: 0.5rem;
+    }
+
+    .btn-primary {
+      min-height: 52px;
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(135deg, var(--purple-primary) 0%, var(--purple-accent) 100%);
+      border: 1px solid var(--purple-bright);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      transition: all 0.16s ease;
+      box-shadow: 0 10px 24px -6px rgba(124, 58, 237, 0.5);
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      filter: brightness(1.1);
+      transform: translateY(-1px);
+      box-shadow: 0 14px 28px -6px rgba(147, 51, 234, 0.65);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .btn-secondary {
+      min-height: 52px;
+      padding: 0.75rem 1.35rem;
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      transition: all 0.16s ease;
+    }
+
+    .btn-secondary:hover:not(:disabled) {
+      background: var(--surface-3);
+      border-color: var(--border-strong);
+    }
+
+    .btn-secondary:disabled {
+      opacity: 0.38;
+      cursor: not-allowed;
+    }
+
+    /* Results Screen */
+    .result-hero-card {
+      background: linear-gradient(155deg, var(--surface-3) 0%, var(--surface-1) 100%);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: clamp(1.35rem, 4vw, 2.15rem);
+      box-shadow: var(--shadow-card);
+      margin-bottom: 1.5rem;
+    }
+
+    .result-top-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      align-items: center;
+      padding-bottom: 1.35rem;
+      border-bottom: 1px solid var(--border-neutral);
+      margin-bottom: 1.35rem;
+    }
+
+    @media (min-width: 560px) {
+      .result-top-grid {
+        grid-template-columns: auto 1fr;
+        gap: 1.75rem;
+      }
+    }
+
+    .score-orb {
+      width: 118px;
+      height: 118px;
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at 30% 30%, rgba(168, 85, 247, 0.25), rgba(13, 13, 18, 0.95));
+      border: 1px solid var(--border-strong);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 0 20px rgba(124, 58, 237, 0.22);
+    }
+
+    .score-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-secondary);
+      margin-bottom: 0.15rem;
+    }
+
+    .score-value {
+      font-family: var(--font-mono);
+      font-size: 2.35rem;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--text-primary);
+    }
+
+    .result-summary-info h2 {
+      font-size: clamp(1.25rem, 3vw, 1.5rem);
+      font-weight: 800;
+      margin-bottom: 0.35rem;
+      color: var(--text-primary);
+    }
+
+    .result-summary-info p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.95rem;
+    }
+
+    .stats-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .stat-pill {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      background: var(--surface-2);
+      border: 1px solid var(--border-neutral);
+    }
+
+    .stat-pill.correct {
+      color: var(--status-correct);
+      border-color: var(--status-correct-border);
+      background: var(--status-correct-bg);
+    }
+
+    .stat-pill.wrong {
+      color: var(--status-wrong);
+      border-color: var(--status-wrong-border);
+      background: var(--status-wrong-bg);
+    }
+
+    .action-buttons-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .action-buttons-row > button {
+      flex: 1 1 210px;
+    }
+
+    /* Filter Bar for Discussion */
+    .discussion-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .discussion-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .filter-group {
+      display: inline-flex;
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.2rem;
+      gap: 0.2rem;
+    }
+
+    .filter-tab {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.4rem 0.75rem;
+      border-radius: 6px;
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.14s ease;
+    }
+
+    .filter-tab.active {
+      background: var(--purple-primary);
+      color: var(--text-primary);
+    }
+
+    /* Review Cards */
+    .review-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.15rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .review-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: clamp(1.1rem, 3vw, 1.5rem);
+      box-shadow: var(--shadow-card);
+    }
+
+    .review-card.is-wrong {
+      border-left: 4px solid var(--status-wrong);
+    }
+
+    .review-card.is-correct {
+      border-left: 4px solid var(--status-correct);
+    }
+
+    .review-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.85rem;
+      padding-bottom: 0.65rem;
+      border-bottom: 1px solid var(--border-neutral);
+    }
+
+    .review-q-number {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .review-status-badge {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .review-status-badge.wrong {
+      color: var(--status-wrong);
+      background: var(--status-wrong-bg);
+      border: 1px solid var(--status-wrong-border);
+    }
+
+    .review-status-badge.correct {
+      color: var(--status-correct);
+      background: var(--status-correct-bg);
+      border: 1px solid var(--status-correct-border);
+    }
+
+    .review-question-text {
+      font-size: 0.98rem;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      overflow-x: auto;
+    }
+
+    .answer-comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.65rem;
+      margin-bottom: 1rem;
+    }
+
+    @media (min-width: 540px) {
+      .answer-comparison-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .answer-box {
+      padding: 0.75rem 0.95rem;
+      border-radius: var(--radius-sm);
+      background: var(--surface-1);
+      border: 1px solid var(--border-neutral);
+      overflow-x: auto;
+    }
+
+    .answer-box.user-wrong {
+      border-color: var(--status-wrong-border);
+      background: var(--status-wrong-bg);
+    }
+
+    .answer-box.user-correct,
+    .answer-box.key-correct {
+      border-color: var(--status-correct-border);
+      background: var(--status-correct-bg);
+    }
+
+    .answer-box-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-secondary);
+      margin-bottom: 0.25rem;
+    }
+
+    .answer-box-value {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .explanation-panel {
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 1rem 1.15rem;
+      overflow-x: auto;
+    }
+
+    .explanation-header {
+      font-family: var(--font-mono);
+      font-size: 0.73rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--purple-bright);
+      margin-bottom: 0.6rem;
+    }
+
+    .explanation-steps {
+      font-size: 0.92rem;
+      color: var(--text-primary);
+      line-height: 1.75;
+    }
+
+    .explanation-steps p {
+      margin-bottom: 0.55rem;
+    }
+
+    .explanation-steps p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* KaTeX Overflow Protection on Small Screens */
+    .katex-display {
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 0.35rem 0;
+      margin: 0.5rem 0 !important;
+    }
+
+    .katex {
+      font-size: 1.04em;
+    }
+
+    /* Notification Modal for Missing External Script */
+    .notice-banner {
+      display: none;
+      margin-top: 1rem;
+      padding: 0.9rem 1.1rem;
+      border-radius: var(--radius-sm);
+      background: var(--status-wrong-bg);
+      border: 1px solid var(--status-wrong-border);
+      color: var(--text-primary);
+      font-size: 0.88rem;
+    }
+
+    .notice-banner.visible {
+      display: block;
+    }
+
+    /* Footer */
+    .app-footer {
+      margin-top: auto;
+      padding-top: 2.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      border-top: 1px solid var(--border-neutral);
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="wakanda-top-bar"></div>
+
+  <main class="app-shell">
+    <!-- ==================== VIEW 1: MENU AWAL ==================== -->
+    <section id="view-menu" class="view-section active" aria-labelledby="main-title">
+      <header class="brand-header">
+        <div class="brand-eyebrow">
+          <span>MATEMATIKA SMA KELAS X</span>
+          <span>/</span>
+          <span>KURIKULUM NASIONAL</span>
+        </div>
+        <h1 id="main-title" class="brand-title">Sistem Evaluasi &amp; Latihan Terstruktur</h1>
+        <p class="brand-subtitle">
+          Pilih salah satu modul materi di bawah ini. Setiap sesi menyajikan 5 soal acak terkalibrasi beserta pembahasan langkah demi langkah berstandar notasi sekolah Indonesia.
+        </p>
+      </header>
+
+      <div class="menu-section-label">
+        <span>DAFTAR MODUL MATERI (4 KATEGORI)</span>
+        <span>5 SOAL ACAK / SESI</span>
+      </div>
+
+      <!-- 4 Tombol Materi Vertikal (1 Kolom) -->
+      <div class="topic-stack" role="list">
+        <button type="button" class="topic-button" data-topic="logaritma" role="listitem">
+          <div class="topic-left">
+            <span class="topic-index">01</span>
+            <div class="topic-info">
+              <div class="topic-name">Logaritma</div>
+              <div class="topic-desc">Sifat operasi aljabar logaritma, perubahan basis, persamaan logaritma, dan aplikasi kontekstual dengan notasi ${}^{a}\log b$.</div>
+            </div>
+          </div>
+          <div class="topic-right">
+            <span class="topic-badge">MODUL AKTIF</span>
+            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+        </button>
+
+        <button type="button" class="topic-button" data-topic="eksponen" role="listitem">
+          <div class="topic-left">
+            <span class="topic-index">02</span>
+            <div class="topic-info">
+              <div class="topic-name">Eksponen</div>
+              <div class="topic-desc">Sifat perpangkatan bulat dan pecahan, penyederhanaan serta rasionalisasi bentuk akar, dan persamaan eksponen kelas 10.</div>
+            </div>
+          </div>
+          <div class="topic-right">
+            <span class="topic-badge">MODUL AKTIF</span>
+            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+        </button>
+
+        <button type="button" class="topic-button" data-topic="fungsi_eksponen" role="listitem">
+          <div class="topic-left">
+            <span class="topic-index">03</span>
+            <div class="topic-info">
+              <div class="topic-name">Fungsi Eksponen</div>
+              <div class="topic-desc">Evaluasi nilai fungsi $f(x) = a \cdot b^x + c$, titik potong sumbu, persamaan asimtot datar, serta model pertumbuhan dan peluruhan.</div>
+            </div>
+          </div>
+          <div class="topic-right">
+            <span class="topic-badge">MODUL AKTIF</span>
+            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+        </button>
+
+        <button type="button" class="topic-button" data-topic="spldv" role="listitem">
+          <div class="topic-left">
+            <span class="topic-index">04</span>
+            <div class="topic-info">
+              <div class="topic-name">Fungsi SPLDV</div>
+              <div class="topic-desc">Sistem Persamaan Linear Dua Variabel, metode eliminasi-substitusi, evaluasi nilai fungsi objektif $ax + by$, dan pemodelan kontekstual.</div>
+            </div>
+          </div>
+          <div class="topic-right">
+            <span class="topic-badge">MODUL AKTIF</span>
+            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </div>
+        </button>
+      </div>
+
+      <div id="menu-notice" class="notice-banner" role="alert"></div>
+    </section>
+
+    <!-- ==================== VIEW 2: PENGERJAAN KUIS ==================== -->
+    <section id="view-quiz" class="view-section" aria-live="polite">
+      <div class="quiz-topbar">
+        <button type="button" id="btn-quit-quiz" class="btn-ghost">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>Kembali ke Menu</span>
+        </button>
+
+        <div class="quiz-meta-pill">
+          <span id="quiz-active-topic" class="quiz-topic-tag">Logaritma</span>
+          <span class="quiz-divider-dot"></span>
+          <span id="quiz-progress-text" class="quiz-step-counter">Soal 1 dari 5</span>
+        </div>
+      </div>
+
+      <div class="progress-track" aria-hidden="true">
+        <div id="quiz-progress-bar" class="progress-fill"></div>
+      </div>
+
+      <article class="question-card">
+        <div class="question-header-row">
+          <span id="question-id-label" class="question-code">ID: LOG-01</span>
+          <span class="question-instruction">PILIH SATU JAWABAN TEPAT</span>
+        </div>
+
+        <div id="question-text" class="question-body"></div>
+
+        <div id="options-container" class="options-grid" role="radiogroup" aria-label="Pilihan Jawaban"></div>
+      </article>
+
+      <div class="quiz-footer">
+        <button type="button" id="btn-prev-question" class="btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+          <span>Sebelumnya</span>
+        </button>
+
+        <button type="button" id="btn-next-question" class="btn-primary" disabled>
+          <span id="btn-next-label">Soal Berikutnya</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- ==================== VIEW 3: HASIL & PEMBAHASAN ==================== -->
+    <section id="view-result" class="view-section" aria-live="polite">
+      <div class="result-hero-card">
+        <div class="result-top-grid">
+          <div class="score-orb">
+            <span class="score-label">NILAI AKHIR</span>
+            <span id="result-score-number" class="score-value">100</span>
+          </div>
+
+          <div class="result-summary-info">
+            <h2 id="result-headline">Evaluasi Selesai</h2>
+            <p id="result-subtitle">Rincian hasil evaluasi dan pembahasan matematis langkah demi langkah ditampilkan di bawah ini.</p>
+            <div class="stats-row">
+              <span id="stat-topic-name" class="stat-pill">Materi: Logaritma</span>
+              <span id="stat-correct-count" class="stat-pill correct">Benar: 5 / 5</span>
+              <span id="stat-wrong-count" class="stat-pill wrong">Salah: 0 / 5</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="action-buttons-row">
+          <button type="button" id="btn-retry-top" class="btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="23 4 23 10 17 10"></polyline>
+              <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+            </svg>
+            <span>Ulangi Materi Ini (5 Soal Baru)</span>
+          </button>
+          <button type="button" id="btn-menu-top" class="btn-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+            <span>Kembali ke Menu</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="discussion-header">
+        <div class="discussion-title">Pembahasan Langkah demi Langkah</div>
+        <div class="filter-group" role="tablist" aria-label="Filter Pembahasan">
+          <button type="button" class="filter-tab active" data-filter="all">Semua (5)</button>
+          <button type="button" class="filter-tab" data-filter="wrong">Dijawab Salah</button>
+          <button type="button" class="filter-tab" data-filter="correct">Dijawab Benar</button>
+        </div>
+      </div>
+
+      <div id="review-cards-container" class="review-list"></div>
+
+      <div class="action-buttons-row">
+        <button type="button" id="btn-retry-bottom" class="btn-primary">
+          <span>Ulangi Materi Ini (5 Soal Baru)</span>
+        </button>
+        <button type="button" id="btn-menu-bottom" class="btn-secondary">
+          <span>Kembali ke Menu</span>
+        </button>
+      </div>
+    </section>
+
+    <footer class="app-footer">
+      <span>STANDAR NOTASI MATEMATIKA SMA INDONESIA</span>
+      <span>ENGINE V1.0 — ZERO-SLOP ARCHITECTURE</span>
+    </footer>
+  </main>
+
+  <!-- ==================== CORE ENGINE & PART 1 QUESTION GENERATORS ==================== -->
+  <script>
+    /**
+     * Global Question Bank Registry
+     * Part 1 fills: window.MATH_BANK.logaritma & window.MATH_BANK.eksponen
+     * Part 2 (materi-lanjutan.js) fills: window.MATH_BANK.fungsi_eksponen & window.MATH_BANK.spldv
+     */
+    window.MATH_BANK = window.MATH_BANK || {};
+
+    const TOPIC_METADATA = {
+      logaritma: {
+        title: 'Logaritma',
+        code: 'LOG'
+      },
+      eksponen: {
+        title: 'Eksponen',
+        code: 'EKS'
+      },
+      fungsi_eksponen: {
+        title: 'Fungsi Eksponen',
+        code: 'FEK'
+      },
+      spldv: {
+        title: 'Fungsi SPLDV',
+        code: 'SPL'
+      }
+    };
+
+    /* ==========================================================================
+       MATHEMATICAL & FORMATTING UTILITIES (Available globally for Part 2 as well)
+       ========================================================================== */
+    const MathUtils = {
+      randInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      },
+
+      pickOne(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+      },
+
+      pickDistinct(arr, count) {
+        const copy = [...arr];
+        this.shuffle(copy);
+        return copy.slice(0, count);
+      },
+
+      shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          const temp = array[i];
+          array[i] = array[j];
+          array[j] = temp;
+        }
+        return array;
+      },
+
+      gcd(a, b) {
+        let x = Math.abs(a);
+        let y = Math.abs(b);
+        while (y !== 0) {
+          const t = y;
+          y = x % y;
+          x = t;
+        }
+        return x || 1;
+      },
+
+      // Format angka desimal ke format koma Indonesia (contoh: 2.5 -> "2,5")
+      formatNum(num, maxDecimals = 2) {
+        if (Number.isInteger(num)) {
+          return String(num);
+        }
+        const fixed = Number(num.toFixed(maxDecimals));
+        return String(fixed).replace('.', ',');
+      },
+
+      // Format tanda aljabar "+ 5" atau "- 5"
+      signedTerm(val, variable = '') {
+        if (val === 0) return '';
+        const sign = val > 0 ? '+' : '-';
+        const absVal = Math.abs(val);
+        const coeff = (absVal === 1 && variable !== '') ? '' : String(absVal);
+        return ` ${sign} ${coeff}${variable}`;
+      },
+
+      /**
+       * Menyusun 4 opsi Pilihan Ganda (A, B, C, D) yang dijamin unik
+       * dan mengembalikan { options, correctIndex } yang 100% terverifikasi.
+       */
+      buildOptions(correctText, distractorCandidates) {
+        const cleanCorrect = String(correctText).trim();
+        const uniqueDistractors = [];
+        const seen = new Set([cleanCorrect]);
+
+        for (const cand of distractorCandidates) {
+          if (cand === undefined || cand === null) continue;
+          const str = String(cand).trim();
+          if (str.length > 0 && !seen.has(str)) {
+            seen.add(str);
+            uniqueDistractors.push(str);
+          }
+          if (uniqueDistractors.length === 3) break;
+        }
+
+        // Fallback aman jika distractor kurang dari 3
+        let fallbackOffset = 1;
+        while (uniqueDistractors.length < 3) {
+          const fallbackStr = `$\\text{Tidak terdefinisi (${fallbackOffset})}$`;
+          if (!seen.has(fallbackStr)) {
+            seen.add(fallbackStr);
+            uniqueDistractors.push(fallbackStr);
+          }
+          fallbackOffset++;
+        }
+
+        const allOptions = [cleanCorrect, ...uniqueDistractors.slice(0, 3)];
+        this.shuffle(allOptions);
+        const correctIndex = allOptions.indexOf(cleanCorrect);
+
+        return {
+          options: allOptions,
+          correctIndex
+        };
+      }
+    };
+
+    window.MathUtils = MathUtils;
+
+    /* ==========================================================================
+       MODUL 1: GENERATOR BANK SOAL LOGARITMA (10 ARCHETYPE BERPARAMETER)
+       Wajib menggunakan notasi logaritma Indonesia: {}^{a}\log b
+       ========================================================================== */
+    const logaritmaGenerators = [
+      // Archetype L1: Gabungan Penjumlahan & Pengurangan Logaritma Sejenis
+      function genLog1() {
+        const base = MathUtils.pickOne([2, 3, 5, 6]);
+        const targetExp = MathUtils.pickOne([2, 3, 4]);
+        const p = MathUtils.randInt(1, targetExp - 1);
+        const q = targetExp - p;
+
+        const coprimePool = [2, 3, 5, 7].filter(n => n !== base && MathUtils.gcd(n, base) === 1);
+        const [u, v] = MathUtils.pickDistinct(coprimePool, 2);
+
+        const x = Math.pow(base, p) * u;
+        const y = Math.pow(base, q) * v;
+        const z = u * v;
+        const powerVal = Math.pow(base, targetExp);
+
+        const id = `LOG-01-${base}-${x}-${y}-${z}`;
+        const question = `Nilai dari $${"{}^{" + base + "}\\log " + x} + ${"{}^{" + base + "}\\log " + y} - ${"{}^{" + base + "}\\log " + z}$ adalah $\\dots$`;
+
+        const correctStr = `$${targetExp}$`;
+        const distractors = [
+          `$${targetExp + 1}$`,
+          `$${targetExp - 1}$`,
+          `$${powerVal}$`,
+          `$${base * targetExp}$`
+        ];
+
+        const { options, correctIndex } = MathUtils.buildOptions(correctStr, distractors);
+
+        const explanation = `
+          <p><strong>Langkah 1:</strong> Gunakan sifat penjumlahan dan pengurangan logaritma dengan basis yang sama, yaitu $${"{}^{a}\\log M + {}^{a}\\log N - {}^{a}\\log P = {}^{a}\\log\\left(\\frac{M \\cdot N}{P}\\right)"}$.</p>
+          <p><strong>Langkah 2:</strong> Substitusikan nilai numerus ke dalam satu logaritma:
+          $$${"{}^{" + base + "}\\log " + x} + ${"{}^{" + base + "}\\log " + y} - ${"{}^{" + base + "}\\log " + z} = ${"{}^{" + base + "}\\log\\left(\\frac{" + x + " \\cdot " + y + "}{" + z + "}\\right)"}$$</p>
+          <p><strong>Langkah 3:</strong> Hitung nilai di dalam tanda kurung:
+          $$\\frac{${x} \\cdot ${y}}{${z}} = \\frac{${x * y}}{${z}} = ${powerVal} = ${base}^{${targetExp}}$$</p>
+          <p><strong>Langkah 4:</strong> Gunakan sifat $${"{}^{a}\\log(a^k) = k"}$:
+          $$${"{}^{" + base + "}\\log(" + base + "^{" + targetExp + "})"} = ${targetExp}$$</p>
+        `;
+
+        return { id, question, options, correctIndex, explanation };
+      },
+
+      // Archetype L2: Sifat Rantai Perkalian Logaritma Berpangkat
+      function genLog2() {
+        const [a, b, c] = MathUtils.pickDistinct([2, 3, 5, 7], 3);
+        const p = MathUtils.randInt(2, 4);
+        const q = MathUtils.randInt(2, 3);
+        const r = MathUtils.randInt(2, 4);
+
+        const num1 = Math.pow(b, p);
+        const num2 = Math.pow(c, q);
+        const num3 = Math.pow(a, r);
+        const ans = p * q * r;
+
+        const id = `LOG-02-${a}-${b}-${c}-${p}-${q}-${r}`;
+        const question = `Hasil operasi perkalian logaritma $${"{}^{" + a + "}\\log " + num1} \\cdot ${"{}^{" + b + "}\\log " + num2} \\cdot ${"{}^{" + c + "}\\log " + num3}$ adalah $\\dots$`;
+
+        const correctStr = `$${ans}$`;
+        const distractors = [
+          `$${p + q + r}$`,
+          `$${p * q + r}$`,
+          `$${ans + p}$`,
+          `$${Math.max(1, ans - q)}$`
+        ];
+
+        const { options, correctIndex } = MathUtils.buildOptions(correctStr, distractors);
+
+        const explanation = `
+          <p><strong>Langkah 1:</strong> Ubah setiap numerus menjadi bentuk bilangan berpangkat sesuai basis logaritma pasangannya:
+          $$${num1} = ${b}^{${p}}, \\quad ${num2} = ${c}^{${q}}, \\quad ${num3} = ${a}^{${r}}$$</p>
+          <p><strong>Langkah 2:</strong> Gunakan sifat $${"{}^{x}\\log(y^n) = n \\cdot {}^{x}\\log y"}$:
+          $$= \\left(${p} \\cdot ${"{}^{" + a + "}\\log " + b}\\right) \\cdot \\left(${q} \\cdot ${"{}^{" + b + "}\\log " + c}\\right) \\cdot \\left(${r} \\cdot ${"{}^{" + c + "}\\log " + a}\\right)$$</p>
+          <p><strong>Langkah 3:</strong> Kelompokkan koefisien di depan dan gunakan sifat rantai $${"{}^{a}\\log b \\cdot {}^{b}\\log c \\cdot {}^{c}\\log a = {}^{a}\\log a = 1"}$:
+          $$= (${p} \\cdot ${q} \\cdot ${r}) \\cdot \\left(${"{}^{" + a + "}\\log " + b} \\cdot ${"{}^{" + b + "}\\log " + c} \\cdot ${"{}^{" + c + "}\\log " + a}\\right) = ${ans} \\cdot 1 = ${ans}$$</p>
+        `;
+
+        return { id, question, options, correctIndex, explanation };
+      },
+
+      // Archetype L3: Perubahan Basis Logaritma dalam Parameter p dan q
+      function genLog3() {
+        const [a, b, c] = MathUtils.pickDistinct([2, 3, 5, 7], 3);
+        const m = MathUtils.pickOne([1, 2]);
+        const n = MathUtils.pickOne([1, 2]);
+
+        const newBase = a * b;
+        const newNumerus = Math.pow(b, m) * Math.pow(c, n);
+
+        const id = `LOG-03-${a}-${b}-${c}-${m}-${n}`;
+        const question = `Diketahui $${"{}^{" + a + "}\\log " + b} = p$ dan $${"{}^{" + b + "}\\log " + c} = q$. Nilai dari $${"{}^{" + newBase + "}\\log " + newNumerus}$ dinyatakan dalam $p$ dan $q$ adalah $\\dots$`;
+
+        const numTerm = `${m === 1 ? 'p' : m + 'p'} + ${n === 1 ? 'pq' : n + 'pq'}`;
+        const wrongNum1 = `${m === 1 ? '1' : m} + ${n === 1 ? 'pq' : n + 'pq'}`;
+        const wrongNum2 = `${m === 1 ? 'p' : m + 'p'} + ${n === 1 ? 'q' : n + 'q'}`;
+
+        const correctStr = `$\\dfrac{${numTerm}}{p + 1}$`;
+        const distractors = [
+          `$\\dfrac{${wrongNum1}}{p + 1}$`,
+          `$\\dfrac{${wrongNum2}}{p + 1}$`,
+          `$\\dfrac{${numTerm}}{pq + 1}$`,
+          `$\\dfrac{${wrongNum2}}{q + 1}$`
+        ];
+
+        const { options, correctIndex } = MathUtils.buildOptions(correctStr, distractors);
+
+        const explanation = `
+          <p><strong>Langkah 1:</strong> Gunakan sifat perubahan basis $${"{}^{x}\\log y = \\frac{{}^{k}\\log y}{{}^{k}\\log x}"}$. Pilih basis perantara $k = ${b}$ karena muncul pada kedua informasi soal ($${"{}^{" + a + "}\\log " + b} = p \\implies ${"{}^{" + b + "}\\log " + a} = \\frac{1}{p}$ dan $${"{}^{" + b + "}\\log " + c} = q$).</p>
+          <p><strong>Langkah 2:</strong> Faktorkan basis $${newBase} = ${a} \\cdot ${b}$ dan numerus $${newNumerus} = ${b}^{${m}} \\cdot ${c}^{${n}}$:
+          $$${"{}^{" + newBase + "}\\log " + newNumerus} = \\frac{${"{}^{" + b + "}\\log(" + b + "^{" + m + "} \\cdot " + c + "^{" + n + ")"}}{${"{}^{" + b + "}\\log(" + a + " \\cdot " + b + ")"} } = \\frac{${m} \\cdot ${"{}^{" + b + "}\\log " + b} + ${n} \\cdot ${"{}^{" + b + "}\\log " + c}}{${"{}^{" + b + "}\\log " + a} + ${"{}^{" + b + "}\\log " + b}}$$</p>
+          <p><strong>Langkah 3:</strong> Substitusikan $${"{}^{" + b + "}\\log " + b} = 1$, $${"{}^{" + b + "}\\log " + a} = \\frac{1}{p}$, dan $${"{}^{" + b + "}\\log " + c} = q$:
+          $$= \\frac{${m} + ${n === 1 ? 'q' : n + 'q'}}{\\frac{1}{p} + 1}$$</p>
+          <p><strong>Langkah 4:</strong> Kalikan pembilang dan penyebut dengan $p$:
+          $$= \\frac{p(${m} + ${n === 1 ? 'q' : n + 'q'})}{1 + p} = \\frac{${numTerm}}{p + 1}$$</p>
+        `;
+
+        return { id, question, options, correctIndex, explanation };
+      },
+
+      // Archetype L4: Persamaan Logaritma Linear Dasar
+      function genLog4() {
+        const base = MathUtils.pickOne([2, 3, 4, 5]);
+        const c = MathUtils.pickOne([2, 3]);
+        const p = MathUtils.pickOne([2, 3, 4, 5]);
+        const xVal = MathUtils.randInt(2, 9);
+
+        const rhsPower = Math.pow(base, c);
+        const q = rhsPower - p * xVal;
+        const qFormatted = MathUtils.signedTerm(q);
+
+        const id = `LOG-04-${base}-${c}-${p}-${xVal}`;
+        const question = `Nilai $x$ yang memenuhi persamaan logaritma $${"{}^{" + base + "}\\log(" + p + "x" + qFormatted + ")"} = ${c}$ adalah $\\dots$`;
+
+        const correctStr = `$${xVal}$`;
+        const distractors = [
+          `$${xVal + 2}$`,
+          `$${Math.max(1, xVal - 1)}$`,
+          `$${xVal + 4}$`,
+          `$${ -xVal }$`
+        ];
+
+        const { options, correctIndex } = MathUtils.buildOptions(correctStr, distractors);
+
+        const explanation = `
+          <p><strong>Langkah 1:</strong> Berdasarkan definisi logaritma, persamaan $${"{}^{a}\\log f(x) = c"}$ ekuivalen dengan $f(x) = a^c$ (dengan syarat numerus $f(x) > 0$).</p>
+          <p><strong>Langkah 2:</strong> Ubah persamaan ke bentuk eksponen:
+          $$${p}x${qFormatted} = ${base}^{${c}}$$
+          $$${p}x${qFormatted} = ${rhsPower}$$</p>
+          <p><strong>Langkah 3:</strong> Selesaikan persamaan linear untuk memperoleh nilai $x$:
+          $$${p}x = ${rhsPower - q} \\implies x = \\frac{${rhsPower - q}}{${p}} = ${xVal}$$</p>
+          <p><strong>Langkah 4:</strong> Uji syarat numerus: untuk $x = ${xVal}$, nilai $${p}(${xVal})${qFormatted} = ${rhsPower} > 0$ (memenuhi).</p>
+        `;
+
+        return { id, question, options, correctIndex, explanation };
+      },
+
+      // Archetype L5: Persamaan Logaritma Kuadrat dengan Uji Syarat Numerus
+      function genLog5() {
+        const base = MathUtils.pickOne([2, 3, 5, 7]);
+        const xValid = MathUtils.randInt(3, 7);
+        const xInvalid = MathUtils.randInt(-5, -2);
+        const p = MathUtils.pickOne([2, 3]);
+        const q = MathUtils.pickOne([1, 2, 3]); // p * xInvalid + q <= 2*(-2) + 3 = -1 < 0 (pasti tidak memenuhi syarat numerus)
+
+        // f(x) - g(x) = (x - xValid)(x - xInvalid) = x^2 - (xValid + xInvalid)x + xValid*xInvalid
+        const bCoeff = p - (xValid + xInvalid);
+        const cCoeff = q + (xValid * xInvalid);
+
+        const bTerm = MathUtils.signedTerm(bCoeff, 'x');
+        const cTerm = MathUtils.signedTerm(cCoeff);
+        const qTerm = MathUtils.signedTerm(q);
+
+        const id = `LOG-05-${base}-${xValid}-${xInvalid}-${p}-${q}`;
+        const question = `Himpunan penyelesaian dari persamaan $${"{}^{" + base + "}\\log(x^2" + bTerm + cTerm + ")"} = ${"{}^{" + base + "}\\log(" + p + "x" + qTerm + ")"}$ adalah $\\dots$`;
+
+        const correctStr = `$\\{${xValid}\\}$`;
+        const distractors = [
+          `$\\{${xInvalid}, ${xValid}\\}$`,
+          `$\\{${xInvalid}\\}$`,
+          `$\\{${-xValid}, ${-xInvalid}\\}$`,
+          `$\\{${xValid + 1}\\}$`
+        ];
+
+        const { options, correctIndex } = MathUtils.buildOptions(correctStr, distractors);
+
+        const gValid = p * xValid + q;
+        const gInvalid = p * xInvalid + q;
+
+        const explanation = `
+          <p><strong>Langkah 1:</strong> Persamaan $${"{}^{a}\\log f(x) = {}^{a}\\log g(x)"}$ memiliki penyelesaian $f(x) = g(x)$ dengan syarat mutlak numerus $f(x) > 0$ dan $g(x) > 0$.</p>
+          <p><strong>Langkah 2:</strong> Samakan kedua numerus dan bentuk persamaan kuadrat:
+          $$x^2${bTerm}${cTerm} = ${p}x${qTerm}$$
+          $$x^2${MathUtils.signedTerm(-(xValid + xInvalid), 'x')}${MathUtils.signedTerm(xValid * xInvalid)} = 0$$
+          $$(x - ${xValid})(x + ${Math.abs(xInvalid)}) = 0$$
+          Diperoleh akar kandidat $x_1 = ${xValid}$ atau $x_2 = ${xInvalid}$.</p>
+          <p><strong>Langkah 3:</strong> Uji syarat numerus pada $g(x) = ${p}x${qTerm} > 0$:
+          <br>• Untuk $x = ${xValid} \\implies g(${xValid}) = ${p}(${xValid})${qTerm} = ${gValid} > 0$ <strong>(Memenuhi)</strong>.
+          <br>• Untuk $x = ${xInvalid} \\implies g(${xInvalid}) = ${p}(${xInvalid})${qTerm} = ${gInvalid} < 0$ <strong>(Tidak Memenuhi)</strong>.</p>
+          <p><strong>Langkah 4:</strong> Jadi, himpunan penyelesaiannya adalah $\\{${xValid}\\}$.</p>
+        `;
+
+        return { id, question, options, correctIndex, explanation };
+      },
+
+      // Archetype L6: Logaritma Berpangkat pada Basis dan Numerus (Format Desimal Koma)
+      function genLog6() {
+        const a = MathUtils.pickOne([2, 3, 5]);
+        const b = MathUtils.pickOne([2, 3, 5].filter(x => x !== a));
+        const nOdd = MathUtils.pickOne([3, 5, 7]); // nOdd / 2 menghasilkan desimal ,5
+        const kExp = MathUtils.pickOne([2, 3, 4]);
+
+        const base1 = Math.pow(a, 2);
+        const num1 = Math.pow(a, nOdd);
+        const num2 = Math.pow(b, kExp);
+
+        const term1Val = nOdd / 2;
+        const term2Val = -kExp;
+        const totalVal = term1Val - term2Val; // karena dikurangi (-kExp)
+
+        const formattedAns = MathUtils.formatNum(totalVal);
+
+        const id = `LOG-06-${a}-${b}-${nOdd}-${kExp}`;
+        const question = `Nilai dari $${"{}^{" + base1 + "}\\log " + num1} - {}^{\\frac{1}{${b}}}\\log ${num2}$ adalah $\\dots$`;
+
+        const correctStr = `$${formattedAns}$`;
+        const distractors = [
+          `$${MathUtils.formatNum(term1Val + term2Val)}$`,
+          `$${MathUtils.formatNum(nOdd + kExp)}$`,
+          `$${MathUtils.formatNum(totalVal + 1)}$`,
+          `$${MathUtils.formatNum(totalVal - 2)}$`
+        ];
+
+        const { options, correctIndex } = MathUtils.buildOptions(correctStr, distractors);
+
+        const explanation = `
+          <p><strong>Langkah 1:</strong> Gunakan sifat pangkat pada basis dan numerus: $${"{}^{a^m}\\log(a^n) = \\frac{n}{m}"}$.</p>
+          <p><strong>Langkah 2:</strong> Ubah suku pertama ke basis $${a}$:
+          $$${"{}^{" + base1 + "}\\log " + num1} = ${"{}^{" + a + "^2}\\log(" + a + "^{" + nOdd + "})"} = \\frac{${nOdd}}{2} = ${MathUtils.formatNum(term1Val)}$$</p>
+          <p><strong>Langkah 3:</strong> Ubah suku kedua ke basis $${b}$ (ingat $\\frac{1}{${b}} = ${b}^{-1}$):
+          $$ {}^{\\frac{1}{${b}}}\\log ${num2} = ${"{}^{" + b + "^{-1}}\\log(" + b + "^{" + kExp + "})"} = \\frac{${kExp}}{-1} = -${kExp}$$</p>
+          <p><strong>Langkah 4:</strong> Hitung hasil akhirnya:
+          $$${MathUtils.formatNum(term1Val)} - (-${kExp}) = ${MathUtils.formatNum(term1Val)} + ${kExp} = ${formattedAns}$$</p>
+        `;
+
+        return { id, question, options, correctIndex, explanation };
+      },
+
+      // Archetype L7: Identitas Eksponen-Logaritma a^(a log b)
+      function genLog7() {
+        const a = MathUtils.pickOne([2, 3, 5]);
+        const b = MathUtils.randInt(3, 7);
+        const c = MathUtils.pickOne([2, 3, 4].filter(x => x !== a));
+        const d = MathUtils.randInt(2, 5);
+
+        const bigA = Math.pow(a, 2);
+        const bigC = Math.pow(c, 2);
+        const term1 = Math.pow(b, 2);
+        const term2 = Math.pow(d, 2);
+        const ans = term1 + term2;
+
+        const id = `LOG-07-${a}-${b}-${c}-${d}`;
+        const question = `Nilai dari bentuk eksponen-logaritma $${bigA}^{{}^{${a}}\\log ${b}} + ${bigC}^{{}^{${c}}\\log ${d}}$ adalah $\\dots$`;
+
+        const correctStr = `$${ans}$`;
+        const distractors = [
+          `$${2 * b + 2 * d}$`,
+          `$${b + d}$`,
+          `$${Math.abs(term1 - term2) || ans + 5}$`,
+          `$${ans + 4}$`
+        ];
+
+        const { options, correctIndex } = MathUtils.buildOptions(correctStr, distractors);
+
+        const explanation = `
+          <p><strong>Langkah 1:</strong> Gunakan sifat identitas eksponen-logaritma: $$a^{{}^{a}\\log k} = k$$ serta sifat perpangkatan $$(a^m)^{{}^{a}\\log k} = a^{m \\cdot {}^{a}\\log k} = a^{{}^{a}\\log(k^m)} = k^m$$.</p>
+          <p><strong>Langkah 2:</strong> Sederhanakan suku pertama ($${bigA} = ${a}^2$):
+          $$${bigA}^{{}^{${a}}\\log ${b}} = (${a}^2)^{{}^{${a}}\\log ${b}} = ${b}^2 = ${term1}$$</p>
+          <p><strong>Langkah 3:</strong> Sederhanakan suku kedua ($${bigC} = ${c}^2$):
+          $$${bigC}^{{}^{${c}}\\log ${d}} = (${c}^2)^{{}^{${c}}\\log ${d}} = ${d}^2 = ${term2}$$</p>
+          <p><strong>Langkah 4:</strong> Jumlahkan kedua hasil:
+          $$${term1} + ${term2} = ${ans}$$</p>
+        `;
+
+        return { id, question, options, correctIndex, explanation };
+      },
+
+      // Archetype L8: Persamaan Logaritma Bentuk Kuadrat
+      function genLog8() {
+        const base = MathUtils.pickOne([2, 3, 5]);
+        const [u1, u2] = MathUtils.pickDistinct([1, 2, 3, 4], 2);
+        const sumU = u1 + u2;
+        const prodU = u1 * u2;
+
+        const x1 = Math.pow(base, u1);
+        const x2 = Math.pow(base, u2);
+        const ansSumX = x1 + x2;
+
+        const id = `LOG-08-${base}-${u1}-${u2}`;
+        const question = `Jika $x_1$ dan $x_2$ memenuhi persamaan $\\left({}^{${base}}\\log x\\right)^2 - ${sumU} \\cdot {}^{${base}}\\log x + ${prodU} = 0$, maka nilai dari $x_1 + x_2$ adalah $\\dots$`;
+
+        const correctStr = `$${ansSumX}$`;
+        const distractors = [
+          `$${sumU}$`,
+          `$${Math.pow(base, sumU)}$`,
+          `$${prodU}$`,
+          `$${Math.abs(x1 - x2)}$`
+        ];
+
+        const { options, correctIndex } = MathUtils.buildOptions(correctStr, distractors);
+
+        const explanation = `
+          <p><strong>Langkah 1:</strong> Misalkan $p = {}^{${base}}\\log x$, sehingga persamaan berubah menjadi persamaan kuadrat dalam variabel $p$:
+          $$p^2 - ${sumU}p + ${prodU} = 0$$</p>
+          <p><strong>Langkah 2:</strong> Faktorkan persamaan kuadrat tersebut:
+          $$(p - ${u1})(p - ${u2}) = 0 \\implies p_1 = ${u1} \\text{ atau } p_2 = ${u2}$$</p>
+          <p><strong>Langkah 3:</strong> Kembalikan ke bentuk logaritma untuk mendapatkan $x_1$ dan $x_2$:
+          <br>• $${"{}^{" + base + "}\\log x_1"} = ${u1} \\implies x_1 = ${base}^{${u1}} = ${x1}$
+          <br>• $${"{}^{" + base + "}\\log x_2"} = ${u2} \\implies x_2 = ${base}^{${u2}} = ${x2}$</p>
+          <p><strong>Langkah 4:</strong> Hitung nilai $x_1 + x_2$:
+          $$x_1 + x_2 = ${x1} + ${x2} = ${ansSumX}$$</p>
+        `;
+
+        return { id, question, options, correctIndex, explanation };
+      },
+
+      // Archetype L9: Aplikasi Kontekstual Logaritma (Taraf Intensitas Bunyi)
+      function genLog9() {
+        const nPow = MathUtils.pickOne([1, 2, 3]);
+        const coeffI = Math.pow(2, nPow); // 2, 4, atau 8
+        const expI = MathUtils.randInt(4, 9);
+        const powerTenDiff = 12 - expI;
+
+        // TI = 10 * 10log(2^nPow * 10^(12-expI)) = 10 * (nPow * 0,3 + (12 - expI)) = 3*nPow + 10*(12 - expI)
+        const ansTI = 3 * nPow + 10 * powerTenDiff;
+
+        const id = `LOG-09-${nPow}-${expI}`;
+        const question = `Taraf intensitas bunyi ($TI$) didefinisikan dengan rumus $TI = 10 \\cdot {}^{10}\\log\\left(\\frac{I}{I_0}\\right)\\text{ dB}$, di mana intensitas ambang pendengaran $I_0 = 10^{-12}\\text{ W/m}^2$. Menggunakan pendekatan $${"{}^{10}\\log 2 = 0,3"}$, taraf intensitas bunyi dari sebuah mesin yang memiliki intensitas $I = ${coeffI} \\times 10^{-${expI}}\\text{ W/m}^2$ adalah $\\dots$`;
+
+        const correctStr = `$${ansTI}\\text{ dB}$`;
+        const distractors = [
+          `$${10 * powerTenDiff}\\text{ dB}$`,
+          `$${ansTI + 3}\\text{ dB}$`,
+          `$${ansTI - 6}\\text{ dB}$`,
+          `$${10 * expI + 3 * nPow}\\text{ dB}$`
+        ];
+
+        const { options, correctIndex } = MathUtils.buildOptions(correctStr, distractors);
+
+        const log2Part = MathUtils.formatNum(nPow * 0.3);
+        const insideSum = MathUtils.formatNum(nPow * 0.3 + powerTenDiff);
+
+        const explanation = `
+          <p><strong>Langkah 1:</strong> Hitung perbandingan intensitas $\\frac{I}{I_0}$:
+          $$\\frac{I}{I_0} = \\frac{${coeffI} \\times 10^{-${expI}}}{10^{-12}} = ${coeffI} \\times 10^{12 - ${expI}} = 2^{${nPow}} \\times 10^{${powerTenDiff}}$$</p>
+          <p><strong>Langkah 2:</strong> Substitusikan ke dalam rumus taraf intensitas bunyi:
+          $$TI = 10 \\cdot {}^{10}\\log\\left(2^{${nPow}} \\times 10^{${powerTenDiff}}\\right)$$
+          $$TI = 10 \\cdot \\left(${nPow} \\cdot {}^{10}\\log 2 + {}^{10}\\log 10^{${powerTenDiff}}\\right)$$</p>
+          <p><strong>Langkah 3:</strong> Substitusikan $${"{}^{10}\\log 2 = 0,3"}$ dan $${"{}^{10}\\log 10^{" + powerTenDiff + "} = " + powerTenDiff}$:
+          $$TI = 10 \\cdot (${log2Part} + ${powerTenDiff}) = 10 \\cdot ${insideSum} = ${ansTI}\\text{ dB}$$</p>
+        `;
+
+        return { id, question, options, correctIndex, explanation };
+      },
+
+      // Archetype L10: Logaritma Bentuk Akar Campuran
+      function genLog10() {
+        const base = MathUtils.pickOne([2, 3, 5, 7]);
+        const m = MathUtils.randInt(1, 4);
+        const nOdd = MathUtils.pickOne([1, 3, 5]);
+        const totalExp = m + nOdd / 2;
+
+        const formattedAns = MathUtils.formatNum(totalExp);
+        const numInsideRoot = nOdd === 1 ? `${base}` : `${base}^{${nOdd}}`;
+        const outsidePart = m === 1 ? `${base}` : `${base}^{${m}}`;
+
+        const id = `LOG-10-${base}-${m}-${nOdd}`;
+        const question = `Nilai dari $${"{}^{" + base + "}\\log\\left(" + outsidePart + " \\sqrt{" + numInsideRoot + "}\\right)"}$ adalah $\\dots$`;
+
+        const correctStr = `$${formattedAns}$`;
+        const distractors = [
+          `$${MathUtils.formatNum(m * (nOdd / 2))}$`,
+          `$${m + nOdd}$`,
+          `$${MathUtils.formatNum(totalExp + 1)}$`,
+          `$${MathUtils.formatNum(Math.abs(m - nOdd / 2))}$`
+        ];
+
+        const { options, correctIndex } = MathUtils.buildOptions(correctStr, distractors);
+
+        const explanation = `
+          <p><strong>Langkah 1:</strong> Ubah bentuk akar menjadi pangkat pecahan menggunakan sifat $\\sqrt{a^n} = a^{\\frac{n}{2}}$:
+          $$\\sqrt{${numInsideRoot}} = ${base}^{\\frac{${nOdd}}{2}} = ${base}^{${MathUtils.formatNum(nOdd / 2)}}$$</p>
+          <p><strong>Langkah 2:</strong> Gabungkan pangkat basis $${base}$ di dalam numerus menggunakan sifat $a^p \\cdot a^q = a^{p + q}$:
+          $$${outsidePart} \\cdot ${base}^{${MathUtils.formatNum(nOdd / 2)}} = ${base}^{${m} + ${MathUtils.formatNum(nOdd / 2)}} = ${base}^{${formattedAns}}$$</p>
+          <p><strong>Langkah 3:</strong> Evaluasi nilai logaritma:
+          $$${"{}^{" + base + "}\\log\\left(" + base + "^{" + formattedAns + "}\\right)"} = ${formattedAns}$$</p>
+        `;
+
+        return { id, question, options, correctIndex, explanation };
+      }
+    ];
+
+    /* ==========================================================================
+       MODUL 2: GENERATOR BANK SOAL EKSPONEN (10 ARCHETYPE BERPARAMETER)
+       ========================================================================== */
+    const eksponenGenerators = [
+      // Archetype E1: Penyederhanaan Aljabar Berpangkat Bulat Negatif
+      function genEks1() {
+        const coeffBase = MathUtils.pickOne([2, 3, 4, 5]);
+        const p1 = MathUtils.randInt(1, 3);
+        const p2 = p1 + MathUtils.randInt(2, 4); // p1 - p2 negatif
+        const q1 = MathUtils.randInt(3, 6);
+        const q2 = q1 - MathUtils.randInt(1, 2); // q1 - q2 positif
+
+        const diffP = p2 - p1; // setelah dipangkatkan -2 menjadi pangkat positif di pembilang
+        const diffQ = q1 - q2; // setelah dipangkatkan -2 menjadi pangkat positif di penyebut
+        const coeffSquared = coeffBase * coeffBase;
+        const finalExpX = 2 * diffP;
+        const finalExpY = 2 * diffQ;
+
+        const id = `EKS-01-${coeffBase}-${p1}-${p2}-${q1}-${q2}`;
+        const question = `Bentuk sederhana dari $\\left(\\dfrac{x^{${p1}} y^{${q1}}}{${coeffBase} x^{${p2}} y^{${q2}}}\\right)^{-2}$ dinyatakan dalam pangkat bulat positif adalah $\\dots$`;
+
+        const correctStr = `$\\dfrac{${coeffSquared} x^{${finalExpX}}}{y^{${finalExpY}}}$`;
+        const distractors = [
+          `$\\dfrac{x^{${finalExpX}}}{${coeffSquared} y^{${finalExpY}}}$`,
+          `$\\dfrac{${coeffSquared} y^{${finalExpY}}}{x^{${finalExpX}}}$`,
+          `$\\dfrac{${2 * coeffBase} x^{${finalExpX}}}{y^{${finalExpY}}}$`,
+          `$\\dfrac{${coeffSquared} x^{${diffP}}}{y^{${diffQ}}}$`
+        ];
+
+        const { options, correctIndex } = MathUtils.buildOptions(correctStr, distractors);
+
+        const explanation = `
+          <p><strong>Langkah 1:</strong> Gunakan sifat $\\left(\\frac{A}{B}\\right)^{-n} = \\left(\\frac{B}{A}\\right)^{n}$ untuk membalik pecahan dan mengubah pangkat luar menjadi positif:
+          $$\\left(\\frac{x^{${p1}} y^{${q1}}}{${coeffBase} x^{${p2}} y^{${q2}}}\\right)^{-2} = \\left(\\frac{${coeffBase} x^{${p2}} y^{${q2}}}{x^{${p1}} y^{${q1}}}\\right)^{2}$$</p>
+          <p><strong>Langkah 2:</strong> Sederhanakan variabel di dalam kurung dengan sifat $\\frac{a^m}{a^n} = a^{m-n}$:
+          $$= \\left(\\frac{${coeffBase} x^{${p2} - ${p1}}}{y^{${q1} - ${q2}}}\\right)^{2} = \\left(\\frac{${coeffBase} x^{${diffP}}}{y^{${diffQ}}}\\right)^{2}$$</p>
+          <p><strong>Langkah 3:</strong> Pangkatkan setiap unsur di dalam tanda kurung dengan $2$:
+          $$= \\frac{${coeffBase}^2 \\cdot (x^{${diffP}})^2}{(y^{${diffQ}})^2} = \\frac{${coeffSquared} x^{${finalExpX}}}{y^{${finalExpY}}}$$</p>
+        `;
+
+        return { id, question, options, correctIndex, explanation };
+      },
+
+      // Archetype E2: Operasi Hitung Bilangan Berpangkat Pecahan
+      function genEks2() {
+        const a = MathUtils.pickOne([2, 3, 4, 5]);
+        const m = MathUtils.pickOne([2, 4]);
+        const b = MathUtils.pickOne([3, 4, 5, 6]);
+        const n = MathUtils.pickOne([1, 3]);
+        const c = MathUtils.pickOne([2, 3]);
+        const p = MathUtils.pickOne([1, 3]);
+
+        const bigA = Math.pow(a, 3);
+        const bigB = Math.pow(b, 2);
+        const bigC = Math.pow(c, 4);
+
+        const valA = Math.pow(a, m);
+        const valB = Math.pow(b, n);
+        const valC = Math.pow(c, p);
+        const ans = valA + valB - valC;
+
+        const id = `EKS-02-${a}-${m}-${b}-${n}-${c}-${p}`;
+        const question = `Hasil dari operasi bilangan berpangkat pecahan $${bigA}^{\\frac{${m}}{3}} + ${bigB}^{\\frac{${n}}{2}} - ${bigC}^{\\frac{${p}}{4}}$ adalah $\\dots$`;
+
+        const correctStr = `$${ans}$`;
+        const distractors = [
+          `$${valA + valB + valC}$`,
+          `$${a * m + b * n - c * p}$`,
+          `$${ans + 2 * valC || ans + 6}$`,
+          `$${ans - 4}$`
+        ];
+
+        const { options, correctIndex } = MathUtils.buildOptions(correctStr, distractors);
+
+        const explanation = `
+          <p><strong>Langkah 1:</strong> Ubah masing-masing bilangan pokok menjadi bentuk pangkat yang sesuai dengan penyebut eksponennya:
+          $$${bigA} = ${a}^3, \\quad ${bigB} = ${b}^2, \\quad ${bigC} = ${c}^4$$</p>
+          <p><strong>Langkah 2:</strong> Gunakan sifat $(x^k)^{\\frac{m}{k}} = x^m$:
+          <br>• $${bigA}^{\\frac{${m}}{3}} = (${a}^3)^{\\frac{${m}}{3}} = ${a}^{${m}} = ${valA}$
+          <br>• $${bigB}^{\\frac{${n}}{2}} = (${b}^2)^{\\frac{${n}}{2}} = ${b}^{${n}} = ${valB}$
+          <br>• $${bigC}^{\\frac{${p}}{4}} = (${c}^4)^{\\frac{${p}}{4}} = ${c}^{${p}} = ${valC}$</p>
+          <p><strong>Langkah 3:</strong> Hitung hasil akhirnya:
+          $$${valA} + ${valB} - ${valC} = ${ans}$$</p>
+        `;
+
+        return { id, question, options, correctIndex, explanation };
+      },
+
+      // Archetype E3: Merasionalkan Penyebut Bentuk Akar Sekawan
+      function genEks3() {
+        const pairs = [
+          [5, 2], [6, 2], [7, 3], [10, 6], [11, 7], [7, 2], [5, 3]
+        ];
+        const [a, b] = MathUtils.pickOne(pairs);
+        const k = MathUtils.randInt(2, 5);
+        const isMinus = MathUtils.pickOne([true, false]);
+
+        const diff = a - b;
+        const numerator = k * diff;
+        const denomSign = isMinus ? '-' : '+';
+        const conjSign = isMinus ? '+' : '-';
+
+        const id = `EKS-03-${a}-${b}-${k}-${isMinus ? 'M' : 'P'}`;
+        const question = `Bentuk rasional dan paling sederhana dari pecahan $\\dfrac{${numerator}}{\\sqrt{${a}} ${denomSign} \\sqrt{${b}}}$ adalah $\\dots$`;
+
+        const correctStr = `$${k}\\sqrt{${a}} ${conjSign} ${k}\\sqrt{${b}}$`;
+        const distractors = [
+          `$${k}\\sqrt{${a}} ${denomSign} ${k}\\sqrt{${b}}$`,
+          `$${numerator}\\sqrt{${a}} ${conjSign} ${numerator}\\sqrt{${b}}$`,
+          `$\\sqrt{${a}} ${conjSign} \\sqrt{${b}}$`,
+          `$${k}\\sqrt{${a + b}}$`
+        ];
+
+        const { options, correctIndex } = MathUtils.buildOptions(correctStr, distractors);
+
+        const explanation = `
+          <p><strong>Langkah 1:</strong> Kalikan pembilang dan penyebut dengan akar sekawan dari penyebut, yaitu $\\left(\\sqrt{${a}} ${conjSign} \\sqrt{${b}}\\right)$:
+          $$\\frac{${numerator}}{\\sqrt{${a}} ${denomSign} \\sqrt{${b}}} \\cdot \\frac{\\sqrt{${a}} ${conjSign} \\sqrt{${b}}}{\\sqrt{${a}} ${conjSign} \\sqrt{${b}}}$$</p>
+          <p><strong>Langkah 2:</strong> Gunakan identitas selisih kuadrat $(\\sqrt{a} - \\sqrt{b})(\\sqrt{a} + \\sqrt{b}) = a - b$ pada penyebut:
+          $$= \\frac{${numerator}\\left(\\sqrt{${a}} ${conjSign} \\sqrt{${b}}\\right)}{${a} - ${b}} = \\frac{${numerator}\\left(\\sqrt{${a}} ${conjSign} \\sqrt{${b}}\\right)}{${diff}}$$</p>
+          <p><strong>Langkah 3:</strong> Sederhanakan koefisien $\\frac{${numerator}}{${diff}} = ${k}$:
+          $$= ${k}\\left(\\sqrt{${a}} ${conjSign} \\sqrt{${b}}\\right) = ${k}\\sqrt{${a}} ${conjSign} ${k}\\sqrt{${b}}$$</p>
+        `;
+
+        return { id, question, options, correctIndex, explanation };
+      },
+
+      // Archetype E4: Operasi Aljabar Bentuk Akar Sejenis
+      function genEks4() {
+        const core = MathUtils.pickOne([2, 3, 5, 6, 7]);
+        const [m1, m2, m3] = MathUtils.pickDistinct([2, 3, 4, 5, 6], 3);
+        const c1 = MathUtils.randInt(2, 4);
+        const c2 = MathUtils.randInt(2, 4);
+        const c3 = MathUtils.randInt(1, 2);
+
+        const rad1 = m1 * m1 * core;
+        const rad2 = m2 * m2 * core;
+        const rad3 = m3 * m3 * core;
+
+        const k1 = c1 * m1;
+        const k2 = c2 * m2;
+        const k3 = c3 * m3;
+        const finalCoeff = k1 + k2 - k3;
+
+        const id = `EKS-04-${core}-${m1}-${m2}-${m3}-${c1}-${c2}-${c3}`;
+        const question = `Hasil penyederhanaan dari $${c1}\\sqrt{${rad1}} + ${c2}\\sqrt{${rad2}} - ${c3 === 1 ? '' : c3}\\sqrt{${rad3}}$ adalah $\\dots$`;
+
+        const correctStr = `$${finalCoeff}\\sqrt{${core}}$`;
+        const distractors = [
+          `$${k1 + k2 + k3}\\sqrt{${core}}$`,
+          `$${finalCoeff + m3}\\sqrt{${core}}$`,
+          `$${(c1 + c2 - c3) * (m1 + m2)}\\sqrt{${core}}$`,
+          `$${finalCoeff}\\sqrt{${2 * core}}$`
+        ];
+
+        const { options, correctIndex } = MathUtils.buildOptions(correctStr, distractors);
+
+        const explanation = `
+          <p><strong>Langkah 1:</strong> Faktorkan setiap bilangan di dalam akar menjadi perkalian bilangan kuadrat sempurna dengan $${core}$:
+          <br>• $${c1}\\sqrt{${rad1}} = ${c1}\\sqrt{${m1 * m1} \\cdot ${core}} = ${c1} \\cdot ${m1}\\sqrt{${core}} = ${k1}\\sqrt{${core}}$
+          <br>• $${c2}\\sqrt{${rad2}} = ${c2}\\sqrt{${m2 * m2} \\cdot ${core}} = ${c2} \\cdot ${m2}\\sqrt{${core}} = ${k2}\\sqrt{${core}}$
+          <br>• $${c3 === 1 ? '' : c3}\\sqrt{${rad3}} = ${c3 === 1 ? '' : c3}\\sqrt{${m3 * m3} \\cdot ${core}} = ${c3} \\cdot ${m3}\\sqrt{${core}} = ${k3}\\sqrt{${core}}$</p>
+          <p><strong>Langkah 2:</strong> Operasikan koefisien bentuk akar sejenis:
+          $$(${k1} + ${k2} - ${k3})\\sqrt{${core}} = ${finalCoeff}\\sqrt{${core}}$$</p>
+        `;
+
+        return { id, question, options, correctIndex, explanation };
+      },
+
+      // Archetype E5: Persamaan Eksponen dengan Konversi Basis
+      function genEks5() {
+        const base = MathUtils.pickOne([2, 3, 5]);
+        const m = 2;
+        const n = 3;
+        const xAns = MathUtils.pickOne([-3, -2, 2, 3, 4, 5]);
+        const p = MathUtils.pickOne([2, 3]);
+        const r = 1;
+        const q = MathUtils.pickOne([-3, -1, 1, 2]);
+
+        // m(p * xAns + q) = n(r * xAns + s) -> 2(p*xAns + q) = 3*xAns + C
+        const lhsExpAtX = m * (p * xAns + q);
+        const constC = lhsExpAtX - n * r * xAns;
+
+        const baseLeft = Math.pow(base, m);
+        const baseRight = Math.pow(base, n);
+
+        const qTerm = MathUtils.signedTerm(q);
+        const cTerm = MathUtils.signedTerm(constC);
+
+        const id = `EKS-05-${base}-${xAns}-${p}-${q}`;
+        const question = `Nilai $x$ yang memenuhi persamaan eksponen $${baseLeft}^{${p}x${qTerm}} = ${baseRight} \\cdot ${base}^{${n}x${MathUtils.signedTerm(constC - n)}}$ adalah $\\dots$`;
+
+        const correctStr = `$${xAns}$`;
+        const distractors = [
+          `$${-xAns}$`,
+          `$${xAns + 2}$`,
+          `$${xAns - 3}$`,
+          `$${xAns + 5}$`
+        ];
+
+        const { options, correctIndex } = MathUtils.buildOptions(correctStr, distractors);
+
+        const coeffLeftX = m * p;
+        const constLeft = m * q;
+        const diffCoeffX = coeffLeftX - n;
+        const diffConst = constC - constLeft;
+
+        const explanation = `
+          <p><strong>Langkah 1:</strong> Samakan bilangan pokok kedua ruas menjadi basis $${base}$ ($${baseLeft} = ${base}^{2}$ dan $${baseRight} = ${base}^{3}$):
+          $$\\left(${base}^{2}\\right)^{${p}x${qTerm}} = ${base}^{3} \\cdot ${base}^{${n}x${MathUtils.signedTerm(constC - n)}}$$</p>
+          <p><strong>Langkah 2:</strong> Gunakan sifat $(a^m)^k = a^{mk}$ pada ruas kiri dan $a^u \\cdot a^v = a^{u+v}$ pada ruas kanan:
+          $$${base}^{${coeffLeftX}x${MathUtils.signedTerm(constLeft)}} = ${base}^{${n}x${cTerm}}$$</p>
+          <p><strong>Langkah 3:</strong> Samakan kedua pangkat:
+          $$${coeffLeftX}x${MathUtils.signedTerm(constLeft)} = ${n}x${cTerm}$$
+          $$${diffCoeffX}x = ${diffConst} \\implies x = ${xAns}$$</p>
+        `;
+
+        return { id, question, options, correctIndex, explanation };
+      },
+
+      // Archetype E6: Persamaan Eksponen Beda Basis Pangkat Sama a^f(x) = b^f(x)
+      function genEks6() {
+        const [a, b] = MathUtils.pickDistinct([3, 5, 6, 7, 11], 2);
+        const x1 = MathUtils.randInt(3, 7);
+        const x2 = MathUtils.randInt(-4, 1); // dijamin x1 > x2
+
+        const sumRoots = x1 + x2;
+        const prodRoots = x1 * x2;
+        const targetVal = 2 * x1 - x2;
+
+        const bTerm = MathUtils.signedTerm(-sumRoots, 'x');
+        const cTerm = MathUtils.signedTerm(prodRoots);
+
+        const id = `EKS-06-${a}-${b}-${x1}-${x2}`;
+        const question = `Jika $x_1$ dan $x_2$ (dengan $x_1 > x_2$) merupakan penyelesaian dari persamaan $${a}^{x^2${bTerm}${cTerm}} = ${b}^{x^2${bTerm}${cTerm}}$, maka nilai dari $2x_1 - x_2$ adalah $\\dots$`;
+
+        const correctStr = `$${targetVal}$`;
+        const distractors = [
+          `$${2 * x2 - x1}$`,
+          `$${x1 + x2}$`,
+          `$${2 * x1 + x2}$`,
+          `$${targetVal + 3}$`
+        ];
+
+        const { options, correctIndex } = MathUtils.buildOptions(correctStr, distractors);
+
+        const explanation = `
+          <p><strong>Langkah 1:</strong> Persamaan eksponen berbentuk $a^{f(x)} = b^{f(x)}$ dengan $a \\neq b$ dan $a, b > 0$ hanya terpenuhi apabila pangkatnya bernilai nol ($f(x) = 0$), sebab $a^0 = b^0 = 1$.</p>
+          <p><strong>Langkah 2:</strong> Buat persamaan kuadrat dari eksponennya:
+          $$x^2${bTerm}${cTerm} = 0$$
+          $$(x - ${x1})\\left(x ${x2 < 0 ? '+ ' + Math.abs(x2) : '- ' + x2}\\right) = 0$$</p>
+          <p><strong>Langkah 3:</strong> Karena disyaratkan $x_1 > x_2$, maka $x_1 = ${x1}$ dan $x_2 = ${x2}$.</p>
+          <p><strong>Langkah 4:</strong> Substitusikan ke bentuk $2x_1 - x_2$:
+          $$2(${x1}) - (${x2}) = ${2 * x1} - (${x2}) = ${targetVal}$$</p>
+        `;
+
+        return { id, question, options, correctIndex, explanation };
+      },
+
+      // Archetype E7: Persamaan Eksponen Bentuk Kuadrat
+      function genEks7() {
+        const base = MathUtils.pickOne([2, 3, 5]);
+        const [u1, u2] = MathUtils.pickDistinct([0, 1, 2, 3], 2);
+
+        const r1 = Math.pow(base, u1);
+        const r2 = Math.pow(base, u2);
+        const coeffS = r1 + r2;
+        const coeffP = r1 * r2;
+        const ansSum = u1 + u2;
+
+        const id = `EKS-07-${base}-${u1}-${u2}`;
+        const question = `Jika $x_1$ dan $x_2$ memenuhi persamaan $${base}^{2x} - ${coeffS} \\cdot ${base}^{x} + ${coeffP} = 0$, maka nilai dari $x_1 + x_2$ adalah $\\dots$`;
+
+        const correctStr = `$${ansSum}$`;
+        const distractors = [
+          `$${coeffS}$`,
+          `$${coeffP}$`,
+          `$${ansSum + 2}$`,
+          `$${u1 * u2}$`
+        ];
+
+        const { options, correctIndex } = MathUtils.buildOptions(correctStr, distractors);
+
+        const explanation = `
+          <p><strong>Langkah 1:</strong> Nyatakan $${base}^{2x} = \\left(${base}^x\\right)^2$, lalu misalkan $p = ${base}^x$:
+          $$p^2 - ${coeffS}p + ${coeffP} = 0$$</p>
+          <p><strong>Langkah 2:</strong> Faktorkan persamaan kuadrat tersebut:
+          $$(p - ${r1})(p - ${r2}) = 0 \\implies p_1 = ${r1} \\text{ atau } p_2 = ${r2}$$</p>
+          <p><strong>Langkah 3:</strong> Kembalikan ke variabel $x$:
+          <br>• $${base}^{x_1} = ${r1} = ${base}^{${u1}} \\implies x_1 = ${u1}$
+          <br>• $${base}^{x_2} = ${r2} = ${base}^{${u2}} \\implies x_2 = ${u2}$</p>
+          <p><strong>Langkah 4:</strong> Maka nilai $x_1 + x_2 = ${u1} + ${u2} = ${ansSum}$.</p>
+        `;
+
+        return { id, question, options, correctIndex, explanation };
+      },
+
+      // Archetype E8: Penarikan Akar Kuadrat Bentuk \sqrt{(a+b) - 2\sqrt{ab}}
+      function genEks8() {
+        const pairs = [
+          [7, 2], [7, 3], [8, 3], [10, 3], [11, 2], [6, 5], [10, 7], [11, 5]
+        ];
+        const [a, b] = MathUtils.pickOne(pairs); // a > b
+        const sumAB = a + b;
+        const prodAB = a * b;
+
+        const id = `EKS-08-${a}-${b}`;
+        const question = `Bentuk sederhana dari $\\sqrt{${sumAB} - 2\\sqrt{${prodAB}}}$ adalah $\\dots$`;
+
+        const correctStr = `$\\sqrt{${a}} - \\sqrt{${b}}$`;
+        const distractors = [
+          `$\\sqrt{${b}} - \\sqrt{${a}}$`,
+          `$\\sqrt{${a}} + \\sqrt{${b}}$`,
+          `$\\sqrt{${a - b}}$`,
+          `$${a} - \\sqrt{${b}}$`
+        ];
+
+        const { options, correctIndex } = MathUtils.buildOptions(correctStr, distractors);
+
+        const explanation = `
+          <p><strong>Langkah 1:</strong> Gunakan sifat penarikan akar kuadrat: untuk $a > b > 0$, berlaku identitas
+          $$\\sqrt{(a + b) - 2\\sqrt{a \\cdot b}} = \\sqrt{a} - \\sqrt{b}$$
+          (Urutan harus $\\sqrt{a} - \\sqrt{b}$ dengan $a > b$ karena hasil akar kuadrat utama tidak boleh bernilai negatif).</p>
+          <p><strong>Langkah 2:</strong> Cari dua bilangan $a$ dan $b$ yang memenuhi $a + b = ${sumAB}$ dan $a \\cdot b = ${prodAB}$. Diperoleh $a = ${a}$ dan $b = ${b}$.</p>
+          <p><strong>Langkah 3:</strong> Substitusikan nilai $a$ dan $b$:
+          $$\\sqrt{(${a} + ${b}) - 2\\sqrt{${a} \\cdot ${b}}} = \\sqrt{${a}} - \\sqrt{${b}}$$</p>
+        `;
+
+        return { id, question, options, correctIndex, explanation };
+      },
+
+      // Archetype E9: Penyederhanaan Pecahan Berpangkat dengan Pemfaktoran
+      function genEks9() {
+        const base = MathUtils.pickOne([2, 3, 4, 5]);
+        const k = MathUtils.pickOne([2, 3, 4]);
+
+        const numeratorFactor = Math.pow(base, k) - 1;
+        const denomFactor = base - 1;
+        const ans = numeratorFactor / denomFactor;
+
+        const id = `EKS-09-${base}-${k}`;
+        const question = `Untuk setiap bilangan riil $n$, nilai dari $\\dfrac{${base}^{n+${k}} - ${base}^{n}}{${base}^{n+1} - ${base}^{n}}$ adalah $\\dots$`;
+
+        const correctStr = `$${ans}$`;
+        const distractors = [
+          `$${Math.pow(base, k)}$`,
+          `$${numeratorFactor}$`,
+          `$${Math.pow(base, k - 1)}$`,
+          `$${ans + base}$`
+        ];
+
+        const { options, correctIndex } = MathUtils.buildOptions(correctStr, distractors);
+
+        const explanation = `
+          <p><strong>Langkah 1:</strong> Uraikan suku berpangkat menggunakan sifat $a^{n+m} = a^n \\cdot a^m$:
+          $$\\frac{${base}^n \\cdot ${base}^{${k}} - ${base}^n \\cdot 1}{${base}^n \\cdot ${base}^1 - ${base}^n \\cdot 1}$$</p>
+          <p><strong>Langkah 2:</strong> Faktorkan $${base}^n$ dari pembilang dan penyebut, lalu sederhanakan karena $${base}^n \\neq 0$:
+          $$= \\frac{${base}^n(${base}^{${k}} - 1)}{${base}^n(${base} - 1)} = \\frac{${Math.pow(base, k)} - 1}{${base} - 1} = \\frac{${numeratorFactor}}{${denomFactor}} = ${ans}$$</p>
+        `;
+
+        return { id, question, options, correctIndex, explanation };
+      },
+
+      // Archetype E10: Persamaan Eksponen Bentuk Akar & Pecahan (Desimal Koma)
+      function genEks10() {
+        const base = MathUtils.pickOne([2, 3, 5, 7]);
+        const c = MathUtils.randInt(4, 7);
+        const m = MathUtils.pickOne([1, 2]);
+        // a^(x - c) = 1 / (a^m \sqrt{a}) = a^(-(m + 0.5)) -> x = c - m - 0.5
+        const rhsExpAbs = m + 0.5;
+        const xVal = c - rhsExpAbs;
+
+        const formattedAns = MathUtils.formatNum(xVal);
+        const mPart = m === 1 ? `${base}` : `${base}^{${m}}`;
+
+        const id = `EKS-10-${base}-${c}-${m}`;
+        const question = `Nilai $x$ yang memenuhi persamaan eksponen $${base}^{x - ${c}} = \\dfrac{1}{${mPart}\\sqrt{${base}}}$ adalah $\\dots$`;
+
+        const correctStr = `$${formattedAns}$`;
+        const distractors = [
+          `$${MathUtils.formatNum(c + rhsExpAbs)}$`,
+          `$${MathUtils.formatNum(xVal + 1)}$`,
+          `$${MathUtils.formatNum(xVal - 1)}$`,
+          `$${MathUtils.formatNum(-xVal)}$`
+        ];
+
+        const { options, correctIndex } = MathUtils.buildOptions(correctStr, distractors);
+
+        const explanation = `
+          <p><strong>Langkah 1:</strong> Ubah penyebut di ruas kanan menjadi satu bilangan berpangkat dengan basis $${base}$:
+          $$${mPart}\\sqrt{${base}} = ${base}^{${m}} \\cdot ${base}^{0,5} = ${base}^{${MathUtils.formatNum(rhsExpAbs)}}$$</p>
+          <p><strong>Langkah 2:</strong> Gunakan sifat $\\frac{1}{a^p} = a^{-p}$:
+          $$${base}^{x - ${c}} = ${base}^{-${MathUtils.formatNum(rhsExpAbs)}}$$</p>
+          <p><strong>Langkah 3:</strong> Samakan eksponen kedua ruas:
+          $$x - ${c} = -${MathUtils.formatNum(rhsExpAbs)} \\implies x = ${c} - ${MathUtils.formatNum(rhsExpAbs)} = ${formattedAns}$$</p>
+        `;
+
+        return { id, question, options, correctIndex, explanation };
+      }
+    ];
+
+    // Daftarkan 2 materi pertama ke window.MATH_BANK
+    window.MATH_BANK.logaritma = logaritmaGenerators;
+    window.MATH_BANK.eksponen = eksponenGenerators;
+
+    /* ==========================================================================
+       QUIZ APPLICATION ENGINE
+       ========================================================================== */
+    const QuizApp = {
+      state: {
+        activeTopic: null,
+        questions: [],
+        userAnswers: [], // Menyimpan index jawaban pengguna (0..3 atau null)
+        currentIndex: 0,
+        activeFilter: 'all'
+      },
+
+      init() {
+        this.bindEvents();
+      },
+
+      bindEvents() {
+        // Tombol 4 Materi pada Menu Awal
+        const topicButtons = document.querySelectorAll('.topic-button');
+        topicButtons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            const topicKey = btn.getAttribute('data-topic');
+            this.startQuiz(topicKey);
+          });
+        });
+
+        // Navigasi Kuis
+        document.getElementById('btn-quit-quiz').addEventListener('click', () => {
+          this.showView('view-menu');
+        });
+
+        document.getElementById('btn-prev-question').addEventListener('click', () => {
+          if (this.state.currentIndex > 0) {
+            this.state.currentIndex--;
+            this.renderCurrentQuestion();
+          }
+        });
+
+        document.getElementById('btn-next-question').addEventListener('click', () => {
+          if (this.state.userAnswers[this.state.currentIndex] === null) return;
+          if (this.state.currentIndex < this.state.questions.length - 1) {
+            this.state.currentIndex++;
+            this.renderCurrentQuestion();
+          } else {
+            this.finishQuiz();
+          }
+        });
+
+        // Tombol pada Halaman Hasil
+        const retryHandler = () => {
+          if (this.state.activeTopic) {
+            this.startQuiz(this.state.activeTopic);
+          }
+        };
+        const menuHandler = () => {
+          this.showView('view-menu');
+        };
+
+        document.getElementById('btn-retry-top').addEventListener('click', retryHandler);
+        document.getElementById('btn-retry-bottom').addEventListener('click', retryHandler);
+        document.getElementById('btn-menu-top').addEventListener('click', menuHandler);
+        document.getElementById('btn-menu-bottom').addEventListener('click', menuHandler);
+
+        // Filter Pembahasan
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        filterTabs.forEach(tab => {
+          tab.addEventListener('click', () => {
+            filterTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            this.state.activeFilter = tab.getAttribute('data-filter');
+            this.renderReviewCards();
+          });
+        });
+      },
+
+      showView(viewId) {
+        document.querySelectorAll('.view-section').forEach(sec => {
+          sec.classList.remove('active');
+        });
+        const target = document.getElementById(viewId);
+        if (target) {
+          target.classList.add('active');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      },
+
+      showNotice(msg) {
+        const banner = document.getElementById('menu-notice');
+        if (!banner) return;
+        if (!msg) {
+          banner.classList.remove('visible');
+          banner.textContent = '';
+        } else {
+          banner.textContent = msg;
+          banner.classList.add('visible');
+        }
+      },
+
+      /**
+       * Membaca riwayat ID soal dari sessionStorage agar soal tidak berulang
+       */
+      getSeenIds(topicKey) {
+        try {
+          const raw = sessionStorage.getItem(`math_seen_${topicKey}`);
+          return raw ? JSON.parse(raw) : [];
+        } catch (e) {
+          return [];
+        }
+      },
+
+      saveSeenIds(topicKey, ids) {
+        try {
+          const trimmed = ids.slice(-60);
+          sessionStorage.setItem(`math_seen_${topicKey}`, JSON.stringify(trimmed));
+        } catch (e) {
+          // Abaikan jika sessionStorage diblokir browser
+        }
+      },
+
+      /**
+       * Membangkitkan 5 soal unik dari window.MATH_BANK[topicKey].
+       * Mendukung format:
+       * - Array fungsi generator: [fn1, fn2, ...]
+       * - Fungsi tunggal yang mengembalikan array soal
+       * - Object { generators: [...], questions: [...] }
+       * - Array objek soal statis
+       */
+      buildFiveQuestions(topicKey) {
+        const bankEntry = window.MATH_BANK[topicKey];
+        if (!bankEntry) return null;
+
+        let generators = [];
+        let staticPool = [];
+
+        if (Array.isArray(bankEntry)) {
+          bankEntry.forEach(item => {
+            if (typeof item === 'function') {
+              generators.push(item);
+            } else if (item && typeof item === 'object' && item.question) {
+              staticPool.push(item);
+            }
+          });
+        } else if (typeof bankEntry === 'function') {
+          const res = bankEntry();
+          if (Array.isArray(res)) {
+            staticPool = res;
+          }
+        } else if (typeof bankEntry === 'object') {
+          if (Array.isArray(bankEntry.generators)) {
+            generators = bankEntry.generators;
+          }
+          if (Array.isArray(bankEntry.questions)) {
+            staticPool = bankEntry.questions;
+          }
+        }
+
+        const seenSet = new Set(this.getSeenIds(topicKey));
+        const selected = [];
+        const selectedIds = new Set();
+
+        // Prioritas 1: Ambil dari generator berparameter (acak urutan generator terlebih dahulu)
+        if (generators.length > 0) {
+          const shuffledGens = [...generators];
+          MathUtils.shuffle(shuffledGens);
+
+          // Putaran pertama: coba 1 soal dari tiap generator berbeda yang belum ada di seenSet
+          for (const genFn of shuffledGens) {
+            if (selected.length >= 5) break;
+            let chosenQuestion = null;
+            for (let attempt = 0; attempt < 8; attempt++) {
+              const candidate = genFn();
+              if (candidate && !selectedIds.has(candidate.id) && !seenSet.has(candidate.id)) {
+                chosenQuestion = candidate;
+                break;
+              }
+              if (!chosenQuestion && candidate && !selectedIds.has(candidate.id)) {
+                chosenQuestion = candidate;
+              }
+            }
+            if (chosenQuestion) {
+              selected.push(chosenQuestion);
+              selectedIds.add(chosenQuestion.id);
+            }
+          }
+
+          // Jika generator kurang dari 5, putar ulang hingga terkumpul 5 soal unik
+          let guard = 0;
+          while (selected.length < 5 && guard < 40) {
+            const genFn = MathUtils.pickOne(shuffledGens);
+            const candidate = genFn();
+            if (candidate && !selectedIds.has(candidate.id)) {
+              selected.push(candidate);
+              selectedIds.add(candidate.id);
+            }
+            guard++;
+          }
+        }
+
+        // Prioritas 2: Jika menggunakan staticPool (atau kombinasi)
+        if (selected.length < 5 && staticPool.length > 0) {
+          const unseenStatic = staticPool.filter(q => !seenSet.has(q.id) && !selectedIds.has(q.id));
+          const seenStatic = staticPool.filter(q => seenSet.has(q.id) && !selectedIds.has(q.id));
+          MathUtils.shuffle(unseenStatic);
+          MathUtils.shuffle(seenStatic);
+
+          const combinedStatic = [...unseenStatic, ...seenStatic];
+          for (const q of combinedStatic) {
+            if (selected.length >= 5) break;
+            selected.push(q);
+            selectedIds.add(q.id);
+          }
+        }
+
+        if (selected.length === 0) return null;
+
+        // Acak urutan 5 soal terpilih menggunakan Fisher-Yates
+        MathUtils.shuffle(selected);
+
+        // Simpan ke riwayat sessionStorage
+        const updatedSeen = [...seenSet, ...selected.map(q => q.id)];
+        this.saveSeenIds(topicKey, updatedSeen);
+
+        return selected.slice(0, 5);
+      },
+
+      startQuiz(topicKey) {
+        this.showNotice('');
+        const questions = this.buildFiveQuestions(topicKey);
+
+        if (!questions || questions.length === 0) {
+          const meta = TOPIC_METADATA[topicKey] || { title: topicKey };
+          this.showNotice(`Modul "${meta.title}" belum dimuat. Pastikan file materi-lanjutan.js (Part 2) berada di direktori yang sama dengan index.html.`);
+          return;
+        }
+
+        this.state.activeTopic = topicKey;
+        this.state.questions = questions;
+        this.state.userAnswers = new Array(questions.length).fill(null);
+        this.state.currentIndex = 0;
+        this.state.activeFilter = 'all';
+
+        const meta = TOPIC_METADATA[topicKey] || { title: topicKey };
+        document.getElementById('quiz-active-topic').textContent = meta.title;
+
+        this.showView('view-quiz');
+        this.renderCurrentQuestion();
+      },
+
+      renderCurrentQuestion() {
+        const idx = this.state.currentIndex;
+        const total = this.state.questions.length;
+        const qObj = this.state.questions[idx];
+        const chosenOption = this.state.userAnswers[idx];
+
+        // Update indikator progres
+        document.getElementById('quiz-progress-text').textContent = `Soal ${idx + 1} dari ${total}`;
+        const progressPercent = ((idx + 1) / total) * 100;
+        document.getElementById('quiz-progress-bar').style.width = `${progressPercent}%`;
+        document.getElementById('question-id-label').textContent = `ID: ${qObj.id}`;
+
+        // Render teks soal
+        const qBody = document.getElementById('question-text');
+        qBody.innerHTML = qObj.question;
+        this.renderMath(qBody);
+
+        // Render 4 tombol opsi (A, B, C, D)
+        const letters = ['A', 'B', 'C', 'D'];
+        const optionsContainer = document.getElementById('options-container');
+        optionsContainer.innerHTML = '';
+
+        qObj.options.forEach((optText, optIndex) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'option-btn' + (chosenOption === optIndex ? ' selected' : '');
+          btn.setAttribute('role', 'radio');
+          btn.setAttribute('aria-checked', chosenOption === optIndex ? 'true' : 'false');
+
+          const badge = document.createElement('span');
+          badge.className = 'option-letter';
+          badge.textContent = letters[optIndex];
+
+          const content = document.createElement('div');
+          content.className = 'option-content';
+          content.innerHTML = optText;
+
+          btn.appendChild(badge);
+          btn.appendChild(content);
+
+          btn.addEventListener('click', () => {
+            this.selectOption(optIndex);
+          });
+
+          optionsContainer.appendChild(btn);
+          this.renderMath(content);
+        });
+
+        // Atur state tombol navigasi bawah
+        const prevBtn = document.getElementById('btn-prev-question');
+        prevBtn.disabled = idx === 0;
+
+        const nextBtn = document.getElementById('btn-next-question');
+        const nextLabel = document.getElementById('btn-next-label');
+        nextBtn.disabled = chosenOption === null;
+        nextLabel.textContent = idx === total - 1 ? 'Selesaikan Evaluasi' : 'Soal Berikutnya';
+      },
+
+      selectOption(optIndex) {
+        this.state.userAnswers[this.state.currentIndex] = optIndex;
+        const buttons = document.querySelectorAll('#options-container .option-btn');
+        buttons.forEach((btn, idx) => {
+          const isSelected = idx === optIndex;
+          btn.classList.toggle('selected', isSelected);
+          btn.setAttribute('aria-checked', isSelected ? 'true' : 'false');
+        });
+        document.getElementById('btn-next-question').disabled = false;
+      },
+
+      finishQuiz() {
+        const total = this.state.questions.length;
+        let correctCount = 0;
+
+        this.state.questions.forEach((q, i) => {
+          if (this.state.userAnswers[i] === q.correctIndex) {
+            correctCount++;
+          }
+        });
+
+        const wrongCount = total - correctCount;
+        const finalScore = Math.round((correctCount / total) * 100);
+        const meta = TOPIC_METADATA[this.state.activeTopic] || { title: this.state.activeTopic };
+
+        document.getElementById('result-score-number').textContent = String(finalScore);
+        document.getElementById('stat-topic-name').textContent = `Materi: ${meta.title}`;
+        document.getElementById('stat-correct-count').textContent = `Benar: ${correctCount} / ${total}`;
+        document.getElementById('stat-wrong-count').textContent = `Salah: ${wrongCount} / ${total}`;
+
+        const headlineEl = document.getElementById('result-headline');
+        if (finalScore === 100) {
+          headlineEl.textContent = 'Penguasaan Materi Sangat Baik';
+        } else if (finalScore >= 80) {
+          headlineEl.textContent = 'Penguasaan Materi Baik';
+        } else if (finalScore >= 60) {
+          headlineEl.textContent = 'Penguasaan Materi Cukup — Perlu Penguatan';
+        } else {
+          headlineEl.textContent = 'Evaluasi Dasar — Pelajari Kembali Langkah Pembahasan';
+        }
+
+        // Reset tab filter ke "Semua"
+        this.state.activeFilter = 'all';
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        filterTabs.forEach(tab => {
+          const f = tab.getAttribute('data-filter');
+          tab.classList.toggle('active', f === 'all');
+          if (f === 'all') tab.textContent = `Semua (${total})`;
+          if (f === 'wrong') tab.textContent = `Salah (${wrongCount})`;
+          if (f === 'correct') tab.textContent = `Benar (${correctCount})`;
+        });
+
+        this.renderReviewCards();
+        this.showView('view-result');
+      },
+
+      renderReviewCards() {
+        const container = document.getElementById('review-cards-container');
+        container.innerHTML = '';
+        const letters = ['A', 'B', 'C', 'D'];
+        const filter = this.state.activeFilter;
+
+        let shownCount = 0;
+
+        this.state.questions.forEach((q, idx) => {
+          const userIdx = this.state.userAnswers[idx];
+          const isCorrect = userIdx === q.correctIndex;
+
+          if (filter === 'wrong' && isCorrect) return;
+          if (filter === 'correct' && !isCorrect) return;
+
+          shownCount++;
+
+          const card = document.createElement('article');
+          card.className = `review-card ${isCorrect ? 'is-correct' : 'is-wrong'}`;
+
+          const userLetter = userIdx !== null ? letters[userIdx] : '-';
+          const userText = userIdx !== null ? q.options[userIdx] : 'Tidak dijawab';
+          const correctLetter = letters[q.correctIndex];
+          const correctText = q.options[q.correctIndex];
+
+          card.innerHTML = `
+            <div class="review-card-top">
+              <span class="review-q-number">SOAL ${idx + 1} (${q.id})</span>
+              <span class="review-status-badge ${isCorrect ? 'correct' : 'wrong'}">
+                ${isCorrect ? 'TERJAWAB BENAR' : 'DIJAWAB SALAH'}
+              </span>
+            </div>
+            <div class="review-question-text">${q.question}</div>
+            <div class="answer-comparison-grid">
+              <div class="answer-box ${isCorrect ? 'user-correct' : 'user-wrong'}">
+                <div class="answer-box-label">JAWABAN ANDA (${userLetter})</div>
+                <div class="answer-box-value">${userText}</div>
+              </div>
+              <div class="answer-box key-correct">
+                <div class="answer-box-label">KUNCI JAWABAN BENAR (${correctLetter})</div>
+                <div class="answer-box-value">${correctText}</div>
+              </div>
+            </div>
+            <div class="explanation-panel">
+              <div class="explanation-header">PEMBAHASAN LANGKAH DEMI LANGKAH</div>
+              <div class="explanation-steps">${q.explanation}</div>
+            </div>
+          `;
+
+          container.appendChild(card);
+          this.renderMath(card);
+        });
+
+        if (shownCount === 0) {
+          const emptyNote = document.createElement('div');
+          emptyNote.className = 'review-card';
+          emptyNote.innerHTML = `<p style="color: var(--text-secondary); font-size: 0.92rem;">Tidak ada soal pada kategori filter ini.</p>`;
+          container.appendChild(emptyNote);
+        }
+      },
+
+      renderMath(element) {
+        if (typeof renderMathInElement === 'function') {
+          renderMathInElement(element, {
+            delimiters: [
+              { left: '$$', right: '$$', display: true },
+              { left: '$', right: '$', display: false }
+            ],
+            throwOnError: false
+          });
+        }
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      QuizApp.init();
+    });
+  </script>
+
+  <!-- Integrasi Modul Part 2 (Fungsi Eksponen & Fungsi SPLDV) -->
+  <script src="materi-lanjutan.js"></script>
+</body>
+</html>
